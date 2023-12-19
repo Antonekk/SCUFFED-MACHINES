@@ -2,23 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RespawnController : RaceElement
+public class AddBoost : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("AI") || other.CompareTag("Player2"))
         {
-            other.GetComponent<SpawnController>().Respawn();
+            StartCoroutine(other.GetComponent<SpawnController>().acc.ChangeAccelerationInTime(0.5f, 160));
         }
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -21,7 +21,6 @@ public class FollowPlayer : MonoBehaviour
     public void rm_animator()
     {
         camera_animator.GetComponent<Animator>().enabled = false;
-        Debug.Log("XD");
     }
 
     void LateUpdate()

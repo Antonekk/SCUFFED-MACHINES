@@ -13,6 +13,7 @@ public class Follow_Winner : RaceElement
 
     public bool did_anim_ended;
     private bool was_flagged;
+    
 
 
     private void Start()
@@ -20,6 +21,8 @@ public class Follow_Winner : RaceElement
         did_anim_ended = false;
         was_flagged = false;
     }
+
+
 
 
     public void rm_animator()
@@ -52,7 +55,6 @@ public class Follow_Winner : RaceElement
         }
 
         Transform p = WhoIsFurther();
-        Debug.Log(p);
         transform.position = new Vector3(p.position.x, y_pos, p.position.z);
     }
 

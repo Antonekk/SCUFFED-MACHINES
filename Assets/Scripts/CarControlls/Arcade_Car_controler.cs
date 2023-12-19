@@ -111,4 +111,13 @@ public class Arcade_Car_controler : RaceElement
         CheckForGround();
         HandleApplyingAcceleration();
     }
+
+    public IEnumerator ChangeAccelerationInTime(float leng, float bonus_value)
+    {
+        float old_val = forward_acceleration;
+        forward_acceleration = bonus_value;
+        yield return new WaitForSeconds(leng);
+        forward_acceleration = old_val;
+    }
+
 }

@@ -11,6 +11,7 @@ public class SpawnController : RaceElement
 
     public int how_many_visited;
     public Rigidbody car_rb;
+    public Arcade_Car_controler acc;
     void Start()
     {
         last_checkpoint = first_checkpoint;
@@ -27,6 +28,13 @@ public class SpawnController : RaceElement
         car_rb.transform.position = last_checkpoint.transform.position;
         car_rb.velocity = new Vector3(0f,0f,0f);
         car_rb.transform.rotation = last_checkpoint.transform.rotation;
+    }
+
+    public void RespawnT(Transform t)
+    {
+        car_rb.transform.position = t.position;
+        car_rb.velocity = new Vector3(0f, 0f, 0f);
+        car_rb.transform.rotation = t.rotation;
     }
 
     public float CalcluateDistanceToNextCheckpoint()

@@ -8,14 +8,24 @@ public class RaceModel : RaceElement
     public TextMeshProUGUI show_winner;
 
 
+    //To PVP
+    public GameObject Player1;
+    public GameObject Player2;
+    public int KillNum;
+
+
+    //To PVE
     public int laps_count;
-    public bool is_game_on;
     public int finish_line_collisions_count;
-    public bool countdown_state;
     public bool has_player_won;
     public bool did_ai_finished;
-
     public TextMeshProUGUI laps_left_gui;
+
+
+
+    public bool is_game_on;
+    public bool countdown_state;
+
 
     public AudioSource race_music;
     public AudioSource PlayerWinSoundEffect;
@@ -28,5 +38,6 @@ public class RaceModel : RaceElement
         countdown_state = true;
         finish_line_collisions_count = 0;
         is_game_on = false;
+
     }
 }
