@@ -54,4 +54,7 @@ public class GameManager : RaceElement
         app.rc_model.laps_left_gui.text = "Laps left: " + (app.rc_model.laps_count - app.rc_model.finish_line_collisions_count).ToString("0");
     }
 
+
+    
+
 }

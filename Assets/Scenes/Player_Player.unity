@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5932aaa3a9a081d4ea7b2811e8fe89e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_using_wsad: 1
 --- !u!1001 &79766554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413df04c17c82f14ebe4fd81e3843de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai_car: {fileID: 1478919825}
+  ai_car: {fileID: 0}
   ai_arcade_controller: {fileID: 1478919822}
   ai_spawn_controller: {fileID: 1251020001}
   player_car: {fileID: 32273317}
@@ -494,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -1426,6 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -1557,6 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -3003,14 +3007,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -45.646942, y: 34.24784, z: 6.979704}
   m_LocalScale: {x: 1, y: 0.7374799, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 787816586}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -270, y: -180, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3080,10 +3084,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9104957f650af314198141a916bac9a2, type: 3}
+  m_Script: {fileID: 11500000, guid: d968f356535afa1459326a38c2638ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 32273315}
+  player1: {fileID: 1251020001}
+  player2: {fileID: 1109003625}
   y_pos: 60
   camera_animator: {fileID: 787816585}
   did_anim_ended: 0
@@ -3684,6 +3689,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   last_checkpoint: {fileID: 0}
   first_checkpoint: {fileID: 1186790767}
+  next_checkpoint: {fileID: 0}
+  how_many_visited: 0
   car_rb: {fileID: 1109003620}
 --- !u!81 &1109003626
 AudioListener:
@@ -4189,6 +4196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 1
   was_visited: 0
   checkpoints_list: []
@@ -4313,6 +4321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   last_checkpoint: {fileID: 0}
   first_checkpoint: {fileID: 1186790767}
+  next_checkpoint: {fileID: 0}
+  how_many_visited: 0
   car_rb: {fileID: 1251020002}
 --- !u!54 &1251020002
 Rigidbody:
@@ -4475,6 +4485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -4782,7 +4793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1293841286}
   m_Layer: 0
-  m_Name: AI
+  m_Name: Player_arrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5424,7 +5435,12 @@ MonoBehaviour:
   engine: {fileID: 1925201491}
   min_pitch: 0.1
   max_pitch: 2
---- !u!114 &1478919825
+--- !u!4 &1478919827 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3815435553298920706, guid: a9cbfe7195f75844aa7ec0619ca7616f, type: 3}
+  m_PrefabInstance: {fileID: 1643423971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1478919829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5433,16 +5449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1478919820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5c16ca748487b499b13d4f580b7e7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5932aaa3a9a081d4ea7b2811e8fe89e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnController: {fileID: 1251020001}
-  checkpoints: {fileID: 103987246}
---- !u!4 &1478919827 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3815435553298920706, guid: a9cbfe7195f75844aa7ec0619ca7616f, type: 3}
-  m_PrefabInstance: {fileID: 1643423971}
-  m_PrefabAsset: {fileID: 0}
+  is_using_wsad: 0
 --- !u!1 &1502977810
 GameObject:
   m_ObjectHideFlags: 0
@@ -5911,6 +5921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -6215,6 +6226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -6448,6 +6460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -6851,7 +6864,7 @@ PrefabInstance:
       addedObject: {fileID: 1478919822}
     - targetCorrespondingSourceObject: {fileID: 4591691155392393144, guid: a9cbfe7195f75844aa7ec0619ca7616f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1478919825}
+      addedObject: {fileID: 1478919829}
   m_SourcePrefab: {fileID: 100100000, guid: a9cbfe7195f75844aa7ec0619ca7616f, type: 3}
 --- !u!1001 &1654206216
 PrefabInstance:
@@ -7305,6 +7318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []
@@ -7530,6 +7544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5afaf230c71574b92959a66835fae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints: []
   is_finish_line: 0
   was_visited: 0
   checkpoints_list: []

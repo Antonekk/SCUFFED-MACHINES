@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckpointsView : MonoBehaviour
+public class CheckpointsView : RaceElement
 {
     public List<CheckPointController> checkpoints;
 

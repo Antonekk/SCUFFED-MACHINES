@@ -5,10 +5,22 @@ using UnityEngine;
 public class PlayerControlls : RaceElement
 {
     private Arcade_Car_controler acc;
-    private readonly string HORIZONTAL = "Horizontal";
-    private readonly string VERTICAL = "Vertical";
+    private string HORIZONTAL = "Horizontal";
+    private string VERTICAL = "Vertical";
+    public bool is_using_wsad;
+
     void Awake()
     {
+        if (is_using_wsad)
+        {
+            HORIZONTAL = "Horizontal";
+            VERTICAL = "Vertical";
+        }
+        else
+        {
+            HORIZONTAL = "Horizontal_Arrows";
+            VERTICAL = "Vertical_Arrows";
+        }
         acc = GetComponent<Arcade_Car_controler>();
     }
 

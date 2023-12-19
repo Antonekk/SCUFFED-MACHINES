@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPointController : RaceElement
+public class CheckPointController : CheckpointsView
 {
 
     public bool is_finish_line;
@@ -26,9 +26,18 @@ public class CheckPointController : RaceElement
             }
             
             spawnController.last_checkpoint = gameObject;
+            spawnController.next_checkpoint = Next_Checkpoint();
+            spawnController.how_many_visited++;
         }
     }
 
+
+    GameObject Next_Checkpoint()
+    {
+        int index = checkpoints_list.LastIndexOf(gameObject);
+        index++;
+        return checkpoints_list[(index % checkpoints_list.Count)];
+    }
     void ResetVisited()
     {
         foreach (GameObject g in checkpoints_list)
