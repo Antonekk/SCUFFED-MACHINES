@@ -12,6 +12,7 @@ public class RaceModel : RaceElement
     public GameObject Player1;
     public GameObject Player2;
     public int KillNum;
+    public GameObject Buttons;
 
 
     //To PVE

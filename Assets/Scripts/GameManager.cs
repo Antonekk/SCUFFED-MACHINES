@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Xml.Serialization;
 
@@ -35,6 +36,7 @@ public class GameManager : RaceElement
     {
         app.rc_model.race_music.Stop();
         app.rc_model.show_winner.gameObject.SetActive(true) ;
+        app.rc_model.Buttons.SetActive(true);
         if(app.rc_model.has_player_won  == true)
         {
             app.rc_model.show_winner.color = Color.green;
@@ -55,6 +57,19 @@ public class GameManager : RaceElement
     }
 
 
-    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
+
+
+
 
 }
